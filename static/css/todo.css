@@ -1,0 +1,54 @@
+body{
+    background-color: #fafafa;
+}
+
+
+input[type="text"]{
+
+    width: 100%;
+}
+
+.created{
+    font-size: .7rem;
+    color: gray;
+    margin-top: 0;
+}
+.task{
+    font-weight: bold;
+    margin: 0;
+}
+
+.sector{
+    border-color: silver;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: .25rem;
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+}
+
+.delete{
+    color: #fe6993;
+    background-color:  rgba(254, 105, 147, 0.1);
+    border-radius: 3px;
+    padding: 0.2em;
+    line-height: 2em;
+}
+
+input{
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+input[type=checkbox] {
+
+ -ms-transform: scale(2); /* IE */
+ -moz-transform: scale(2); /* FF */
+ -webkit-transform: scale(2); /* Safari and Chrome */
+ -o-transform: scale(2); /* Opera */
+}

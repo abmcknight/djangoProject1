@@ -1,0 +1,52 @@
+{% extends 'todo/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>To-do-list</title>
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center">
+            <h1 class="display-4">TO-DO-LIST</h1>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                {{ form.description }}
+                <div class="input-group-append">
+                    <input class="btn btn-primary" type="submit" value="ADD">
+                </div>
+            </div>
+        </form>
+    </div>
+    {% for todos in todo %}
+    {% if  todos.completed %}
+        <div class="container-fluid sector" style="background-color: #eeeeee; color: gray;">
+    {% else %}
+        <div class="container-fluid sector">
+    {% endif %}
+            <div class="row">
+            {% if  todos.completed %}
+                <div class="col" style="text-decoration: line-through;" >
+            {% else %}
+                <div class="col">
+            {% endif %}
+                    <p class="task">{{ todos }}</p>
+                    <p class="created">{{ todos.created_at }}</p>
+                </div>
+                <div class="col-md-auto" >
+                    {% if  todos.completed %}
+                        <a href="{% url 'update' todos.id %}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'delete' todos.id %}" class="btn btn-danger">Delete</a>
+                    {% else %}
+                        <a href="{% url 'complete' todos.id %}" class="btn btn-success">Completed</a>
+                        <a href="{% url 'update' todos.id %}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'delete' todos.id %}" class="btn btn-danger">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
